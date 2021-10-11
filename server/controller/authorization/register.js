@@ -14,7 +14,7 @@ const register = async (req, res) => {
   } catch (err) {
     res.status(400).json({
         success: false,
-        message: "create new staff filed",
+        message: "create new user filed",
         error: err.message,
       });
   }

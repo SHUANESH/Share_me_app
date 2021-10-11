@@ -22,6 +22,7 @@ db.on("error", () => {
 // use route
 app.use("/api", routeLoginRegister);
 
+
 app.listen(PORT, () => {
   console.log(
     `${chalk.green("Share_me_app")} ${chalk.yellow(
