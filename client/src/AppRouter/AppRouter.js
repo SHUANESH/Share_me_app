@@ -1,9 +1,9 @@
 import React from "react";
 import { Switch, Route}from 'react-router-dom';
-import Home from '../components/pages/home/Home'
-import Intreview from '../components/pages/interviews/Interviews'
-import Login from '../components/pages/sign-in/SignIn'
-import Tips from '../components/pages/tips/Tips'
+import Home from '../Components/pages/home/Home'
+import Intreview from '../Components/pages/interviews/Interviews'
+import Login from '../Components/pages/sign-in/SignIn'
+import Tips from '../Components/pages/tips/Tips'
 
 
 export default function AppRouter() {
