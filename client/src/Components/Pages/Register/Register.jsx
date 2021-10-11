@@ -1,15 +1,10 @@
 import React from "react";
-import {useState } from "react";
+import { useState } from "react";
+import {Link} from "react-router-dom"
 import "./Register.css";
 import handleChange from "../../../utils/handleChange";
 import { hebrewVariables } from "../../../utils/hebrewVariables";
 
-// let generator = require("generate-password");
-
-// let password = generator.generate({
-//   length: 8,
-//   numbers: true,
-// });
 const Register = () => {
   const [userInfo, setUserInfo] = useState({
     firstName: "",
@@ -28,13 +23,13 @@ const Register = () => {
       debugger;
       await fetch("/api/register", {
         method: "POST",
-        body:  JSON.stringify(userInfo),
+        body: JSON.stringify(userInfo),
       })
         .then((response) => {
           if (!response.data) throw response;
           return response;
         })
-        .then((response) => setUserInfo(response))
+        .then((response) => (isSend ? setIsSend(false) : setIsSend(true)))
         .catch((err) => {
           throw err;
         });
@@ -43,101 +38,74 @@ const Register = () => {
     }
   };
 
-  //   const [userInfo, setUserInfo] = useState({
-  //     registeredAs: "Student",
-  //     id: user._id,
-  //     courseId: course._id,
-  //     courseName: course.name,
-  //     password: password,
-  //   });
-
   const [isSend, setIsSend] = useState(false);
-
   return (
     <>
-      {!isSend ? (
-        <form
-          className="register-form-form"
-          onSubmit={(e) => {
-            e.preventDefault();
-          }}
-        >
-          <label>{hebrewVariables.firstName}</label>
-          <input
-            name="firstName"
-            onChange={(e) => handleChange(e, userInfo, setUserInfo)}
-            type={"text"}
-          />
-          {/* <p> {errors?.firstName ? errors.firstName : ""} </p> */}
+      <form
+        className="register-form-form"
+        onSubmit={(e) => {
+          e.preventDefault();
+        }}
+      >
+        <label>{hebrewVariables.firstName}</label>
+        <input
+          name="firstName"
+          onChange={(e) => handleChange(e, userInfo, setUserInfo)}
+          type={"text"}
+        />
 
-          <label>{hebrewVariables.lastName}</label>
-          <input
-            name="lastName"
-            onChange={(e) => handleChange(e, userInfo, setUserInfo)}
-            type={"text"}
-          />
-          {/* <p> {errors?.lastName ? errors.lastName : ""} </p> */}
+        <label>{hebrewVariables.lastName}</label>
+        <input
+          name="lastName"
+          onChange={(e) => handleChange(e, userInfo, setUserInfo)}
+          type={"text"}
+        />
 
-          <label>{hebrewVariables.email}</label>
-          <input
-            name="email"
-            onChange={(e) => handleChange(e, userInfo, setUserInfo)}
-            type={"email"}
-          />
-          {/* <p> {errors?.email ? errors.email : ""} </p> */}
-          <label>{hebrewVariables.phone}</label>
-          <input
-            name="phone"
-            onChange={(e) => handleChange(e, userInfo, setUserInfo)}
-            type={"text"}
-          />
-          {/* <p> {errors?.phone ? errors.phone : ""} </p> */}
+        <label>{hebrewVariables.email}</label>
+        <input
+          name="email"
+          onChange={(e) => handleChange(e, userInfo, setUserInfo)}
+          type={"email"}
+        />
+        <label>{hebrewVariables.phone}</label>
+        <input
+          name="phone"
+          onChange={(e) => handleChange(e, userInfo, setUserInfo)}
+          type={"text"}
+        />
 
-          <label>{hebrewVariables.age}</label>
-          <input
-            name="age"
-            onChange={(e) => handleChange(e, userInfo, setUserInfo)}
-            type={"number"}
-          />
+        <label>{hebrewVariables.age}</label>
+        <input
+          name="age"
+          onChange={(e) => handleChange(e, userInfo, setUserInfo)}
+          type={"number"}
+        />
 
-         <label>{"ID"}</label>
-          <input
-            name="IdNumber"
-            onChange={(e) => handleChange(e, userInfo, setUserInfo)}
-            type={"text"}
-          />
+        <label>{"ID"}</label>
+        <input
+          name="IdNumber"
+          onChange={(e) => handleChange(e, userInfo, setUserInfo)}
+          type={"text"}
+        />
 
-          <label>{"role"}</label>
-          <input
-            name="role"
-            onChange={(e) => handleChange(e, userInfo, setUserInfo)}
-            type={"text"}
-            value={userInfo.role}
-          />
-          {/* <p> {errors?.age ? errors.age : ""} </p> */}
+        <label>{"role"}</label>
+        <input
+          name="role"
+          onChange={(e) => handleChange(e, userInfo, setUserInfo)}
+          type={"text"}
+          value={userInfo.role}
+        />
 
-          <label>{hebrewVariables.password}</label>
-          <input
-            name="password"
-            onChange={(e) => handleChange(e, userInfo, setUserInfo)}
-            type={"text"}
-            value={userInfo.password}
-          />
-          <button onClick={sendUserSign, setIsSend(true)}>{"sign in"}</button>
-        </form>
-      ) : (
-        ""
-        // <div>
-        //   <h3>
-        //     {userInfo.firstName} {userInfo.lastName}{hebrewVariables.registered}
-        //   </h3>
-        //   <p> {hebrewVariables.emailSent} {userInfo.email}</p>
-        //   <button onClick={() => {
-        //     SetIsRegister();
-        //     setIsSend(false)
-        //   }}>{hebrewVariables.closeBtn}</button>
-        // </div>
-      )}
+        <label>{hebrewVariables.password}</label>
+        <input
+          name="password"
+          onChange={(e) => handleChange(e, userInfo, setUserInfo)}
+          type={"text"}
+          value={userInfo.password}
+        />
+        <button onClick={sendUserSign}>{"sign in"}</button>
+        {/* {!isSend ? <Link path="/login">Log in</Link> : ""} */}
+      </form>
     </>
   );
 };
