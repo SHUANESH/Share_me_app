@@ -8,12 +8,11 @@ const chalk = require("chalk");
 const options = {
   useNewUrlParser: true,
   useUnifiedTopology: true,
-  useFindAndModify: false,
-  useCreateIndex: true,
+  // useFindAndModify: false,
+  // useCreateIndex: true,
 };
 
-mongoose
-  .connect(dbConnection, options)
+mongoose.connect(dbConnection, options)
   .then(() => {
     console.log(chalk.green("mongoDB connected"));
   })
