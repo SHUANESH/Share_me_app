@@ -1,6 +1,7 @@
 const mongoose = require("mongoose");
 const Joi = require("joi");
 const joigoose = require("joigoose")(mongoose);
+
 const Schema = mongoose.Schema;
 const userSchema = Joi.object({
   firstName: Joi.string()
@@ -16,7 +17,6 @@ const userSchema = Joi.object({
   .min(10),
   password:Joi.string()
   .required()
-  .max(20)
   .min(8),
   profileImg: Joi.string(),
   IdNumber: Joi.string()
@@ -34,7 +34,7 @@ const userValid = (user)=>{
     const userJoi = userSchema.validate(user);
     return userJoi
 };
-const   userMongoose = new mongoose.Schema(joigoose.convert(userSchema))
+const userMongoose = new mongoose.Schema(joigoose.convert(userSchema))
 const UserModel = mongoose.model("user", userMongoose);
 
 module.exports ={

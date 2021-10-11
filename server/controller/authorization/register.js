@@ -3,7 +3,6 @@ const bcrypt = require("bcrypt");
 
 const register = async (req, res) => {
   try {
-    console.log(req.body);
     const errorOfReqBody = userValid(req.body);
     if (errorOfReqBody.error) {
       return res.status(401).json({
@@ -12,14 +11,11 @@ const register = async (req, res) => {
       });
     }
   } catch (err) {
-    res.status(400).json({
-        success: false,
-        message: "create new user filed",
-        error: err.message,
-      });
+     console.log(err);
   }
 
   await UserModel.findOne({ email: req.body.email }, (err, result) => {
+
     if (err) throw err;
     if (result) {
       return res.status(401).json({
@@ -34,7 +30,6 @@ const register = async (req, res) => {
       bcrypt.hash(req.body.password, salt, async (err, hash) => {
         if (err) throw err;
         req.body.password = hash;
-
         const {
           firstName,
           lastName,
@@ -49,23 +44,25 @@ const register = async (req, res) => {
           lastName: lastName,
           email: email,
           phone: phone,
-          password: req.body.password,
+          password: `${req.body.password}`,
           age: age,
           role: role,
-          profileImg: req.file ? req.file.path : "",
+          profileImg: req.file ? req.file.path : "null",
           IdNumber: IdNumber,
         });
         try {
+          // await UserModel.insertMany(newUser)
           await newUser.save();
+          console.log(newUser);
           res.status(201).json({
             success: true,
-            message: "create new staff success",
+            message: "create new user success",
             data: newUser,
           });
         } catch (err) {
           res.status(400).json({
             success: false,
-            message: "create new staff filed",
+            message: "create new user filed !",
             error: err.message,
           });
         }
