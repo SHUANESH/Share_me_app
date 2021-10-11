@@ -1,7 +1,7 @@
 import React from "react";
 import { useState } from "react";
 import {Link} from "react-router-dom"
-import "./Register.css";
+import "./register.scss";
 import handleChange from "../../../utils/handleChange";
 import { hebrewVariables } from "../../../utils/hebrewVariables";
 
