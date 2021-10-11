@@ -8,8 +8,8 @@ const chalk = require("chalk");
 const options = {
   useNewUrlParser: true,
   useUnifiedTopology: true,
-  useFindAndModify: false,
-  useCreateIndex: true,
+  // useFindAndModify: false,
+  // useCreateIndex: true,
 };
 
 mongoose
