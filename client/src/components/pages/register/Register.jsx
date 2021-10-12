@@ -52,7 +52,7 @@ const Register = () => {
           e.preventDefault();
         }}
       >
-        <TextField dir="ltr"
+        <TextField 
           name="firstName"
           value={userInfo.firstName}
           onChange={(e) => handleChange(e, userInfo, setUserInfo)}
@@ -83,12 +83,6 @@ const Register = () => {
           label={hebrewVariables.phone}
         />
         <TextField
-          name="age"
-          onChange={(e) => handleChange(e, userInfo, setUserInfo)}
-          type={"number"}
-          label={hebrewVariables.age}
-        />
-        <TextField
           name="IdNumber"
           value={userInfo.IdNumber}
           onChange={(e) => handleChange(e, userInfo, setUserInfo)}
@@ -113,9 +107,9 @@ const Register = () => {
         />
          <Button variant="outlined" onClick={sendUserSign }color="primary">הרשמי
  </Button>
- <Button variant="outlined" color="secondary">התחברי
+ {/* <Button variant="outlined" color="secondary">התחברי
  <Link to="/"></Link>
- </Button>
+ </Button> */}
         {/* <button onClick={sendUserSign}>{"sign in"}</button>
         <Link to="/">Log in</Link>  */}
       </form>

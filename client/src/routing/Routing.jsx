@@ -11,16 +11,18 @@ import {Context, ContextProvider} from "../context/Context";
 const Routing = () => {
     const {user} = useContext(Context);
     return (
-    <ContextProvider>
-            <Switch>
-                <Route  exact path='/login'>{user? <Home/> : <Login />}</Route>
-                <Route  path='/register'> <Register /> </Route>
-                <Route  path='/'>{user? <Home/> : <Login />}</Route>
-                <Route  path='/interview' >{user? <Interview/> : <Login />}</Route>
-                <Route  path='/information'>{user? <Information/> : <Login />}</Route>
-                <Route  path='/tips'>{user? <Tips/> : <Login />}</Route>
-            </Switch>
-    </ContextProvider>
+        <ContextProvider>
+        <Switch>
+            {/* <Route path="/forum/:id" component={PostDetails} />
+            <Route path="/forum" component={Forum} /> */}
+            <Route  exact path='/login'> <Home/> </Route>
+            <Route  path='/register'> <Register /> </Route>
+            <Route  path='/'> <Home/> </Route>
+            <Route  path='/interview' ><Interview/></Route>
+            <Route  path='/information'><Information/> </Route>
+            <Route  path='/tips'> <Tips/> </Route>
+        </Switch>
+</ContextProvider>
     )
 }
 
