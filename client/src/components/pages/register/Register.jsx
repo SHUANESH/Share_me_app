@@ -19,9 +19,9 @@ const Register = () => {
     e.preventDefault();
     try {
       debugger;
-      await fetch("/api/register", {
+        await fetch("/api/register", {
         method: "POST",
-        body: JSON.stringify(userInfo),
+        body: JSON.stringify({...userInfo}),
       })
         .then((response) => {
           if (!response.data) throw response;
