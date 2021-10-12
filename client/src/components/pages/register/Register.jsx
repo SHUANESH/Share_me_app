@@ -22,18 +22,10 @@ const Register = () => {
     e.preventDefault();
     try {
       debugger;
-      const res = await axios.post("/api/register" , {
+      const res =  axios.post("/api/register" , {
         ...userInfo
       })
-      setUserInfo({
-        firstName: "",
-        lastName: "",
-        email: "",
-        phone: "",
-        password: "",
-        role: "",
-        IdNumber: "",
-      })
+      setIsSend(true)
     } catch (error) {
       console.log(error);
     }
@@ -50,6 +42,7 @@ const Register = () => {
         <label>{hebrewVariables.firstName}</label>
         <input
           name="firstName"
+          value={userInfo.firstName}
           onChange={(e) => handleChange(e, userInfo, setUserInfo)}
           type={"text"}
         />
@@ -57,6 +50,7 @@ const Register = () => {
         <label>{hebrewVariables.lastName}</label>
         <input
           name="lastName"
+          value={userInfo.lastName}
           onChange={(e) => handleChange(e, userInfo, setUserInfo)}
           type={"text"}
         />
@@ -64,12 +58,14 @@ const Register = () => {
         <label>{hebrewVariables.email}</label>
         <input
           name="email"
+          value={userInfo.email}
           onChange={(e) => handleChange(e, userInfo, setUserInfo)}
           type={"email"}
         />
         <label>{hebrewVariables.phone}</label>
         <input
           name="phone"
+          value={userInfo.phone}
           onChange={(e) => handleChange(e, userInfo, setUserInfo)}
           type={"text"}
         />
@@ -84,6 +80,7 @@ const Register = () => {
         <label>{"ID"}</label>
         <input
           name="IdNumber"
+          value={userInfo.IdNumber}
           onChange={(e) => handleChange(e, userInfo, setUserInfo)}
           type={"text"}
         />
@@ -91,20 +88,20 @@ const Register = () => {
         <label>{"role"}</label>
         <input
           name="role"
+          value={userInfo.role}
           onChange={(e) => handleChange(e, userInfo, setUserInfo)}
           type={"text"}
-          value={userInfo.role}
         />
 
         <label>{hebrewVariables.password}</label>
         <input
           name="password"
+          value={userInfo.password}
           onChange={(e) => handleChange(e, userInfo, setUserInfo)}
           type={"text"}
-          value={userInfo.password}
         />
-        <button onClick={sendUserSign}>{"sign in"}</button>
-        <Link to="/login" onClick={()=>setIsSend(false)}>Log in</Link> 
+        <button onClick={sendUserSign}>{"sign up"}</button>
+         <button><Link to="/login" onClick={()=>setIsSend(false)}>Log in</Link> </button> 
       </form>
     </>
   );
