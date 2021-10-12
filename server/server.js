@@ -11,6 +11,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 //import route
+const routeLoginRegister = require("./route/loginRouting");
 
 //DB connection
 const db = require("./DB");
@@ -19,6 +20,7 @@ db.on("error", () => {
 });
 
 // use route
+app.use("/api", routeLoginRegister);
 
 
 app.listen(PORT, () => {
