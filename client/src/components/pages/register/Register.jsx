@@ -1,6 +1,6 @@
 import React from 'react'
 
-const SignIn = () => {
+const Register = () => {
   const [userInfo, setUserInfo] = useState({
     firstName: "",
     lastName: "",
@@ -105,4 +105,4 @@ const SignIn = () => {
   );
 }
 
-export default SignIn
+export default Register
