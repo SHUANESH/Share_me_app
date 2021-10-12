@@ -1,13 +1,19 @@
-import React from 'react'
+import {useState, useContext} from 'react';
+import { Context } from "../../../context/Context";
+import handleChange from "../../../utils/handleChange";
+import { Link } from "react-router-dom";
+import { hebrewVariables } from "../../../utils/hebrewVariables";
+import axios from "axios"
 
 const Register = () => {
+  const [isSend, setIsSend] = useState(false);
+  const { dispatch, isFetching } = useContext(Context);
   const [userInfo, setUserInfo] = useState({
     firstName: "",
     lastName: "",
     email: "",
     phone: "",
     password: "",
-    age: 0,
     role: "",
     IdNumber: "",
   });
@@ -16,24 +22,23 @@ const Register = () => {
     e.preventDefault();
     try {
       debugger;
-      await fetch("/api/register", {
-        method: "POST",
-        body: JSON.stringify(userInfo),
+      const res = await axios.post("/api/register" , {
+        ...userInfo
       })
-        .then((response) => {
-          if (!response.data) throw response;
-          return response;
-        })
-        .then((response) => (isSend ? setIsSend(false) : setIsSend(true)))
-        .catch((err) => {
-          throw err;
-        });
+      setUserInfo({
+        firstName: "",
+        lastName: "",
+        email: "",
+        phone: "",
+        password: "",
+        role: "",
+        IdNumber: "",
+      })
     } catch (error) {
       console.log(error);
     }
-  };
 
-  const [isSend, setIsSend] = useState(false);
+  };
   return (
     <>
       <form
@@ -69,12 +74,12 @@ const Register = () => {
           type={"text"}
         />
 
-        <label>{hebrewVariables.age}</label>
+        {/* <label>{hebrewVariables.age}</label>
         <input
           name="age"
           onChange={(e) => handleChange(e, userInfo, setUserInfo)}
           type={"number"}
-        />
+        /> */}
 
         <label>{"ID"}</label>
         <input
@@ -99,7 +104,7 @@ const Register = () => {
           value={userInfo.password}
         />
         <button onClick={sendUserSign}>{"sign in"}</button>
-        {/* {!isSend ? <Link path="/login">Log in</Link> : ""} */}
+        <Link to="/login" onClick={()=>setIsSend(false)}>Log in</Link> 
       </form>
     </>
   );
