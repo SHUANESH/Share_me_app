@@ -25,9 +25,10 @@ const userSchema = Joi.object({
   .min(8),
   role: Joi.string()
   .required(),
-  messages: [{ type: Schema.Types.ObjectId, ref: "message" }],
+  creatDate:Joi.date().valid(new Date()),
+  messages:Joi.array().valid( Schema.Types.ObjectId, "message")
+ 
 },
-{ timestamps: true }
 )
 
 const userValid = (user)=>{
