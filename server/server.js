@@ -12,6 +12,7 @@ app.use(express.urlencoded({ extended: true }));
 
 //import route
 const routeLoginRegister = require("./route/loginRouting");
+const routerForum = require('./route/messageRouter')
 
 //DB connection
 const db = require("./DB");
@@ -21,6 +22,8 @@ db.on("error", () => {
 
 // use route
 app.use("/api", routeLoginRegister);
+app.use("/forum", routerForum);
+
 
 
 app.listen(PORT, () => {
