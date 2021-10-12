@@ -24,8 +24,8 @@ db.on("error", () => {
 
 // use route
 app.use("/api", routeLoginRegister);
-app.use('/user', routerUser);
-app.use("/forum", routerForum);
+app.use("/api/user", routerUser);
+app.use("/api/forum", routerForum);
 
 
 

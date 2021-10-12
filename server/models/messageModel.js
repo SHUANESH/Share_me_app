@@ -12,6 +12,10 @@ const messageSchema = new Schema(
     title: {
       type: String,
     },
+    messageType:{
+      type: String,
+      enum:["interview" , "information" , "tips"]
+    },
     message: {
       type: String,
       required: true,
