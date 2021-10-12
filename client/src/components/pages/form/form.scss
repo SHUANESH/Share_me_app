@@ -1,97 +1,8 @@
-// // * {
-// //     padding: 0px;
-// //     margin: 0px;
-// //     box-sizing: 0px;
-// // }
-
-.container {
-    background-color: white;
-    display: flex;
-    // height: 100vh;
-    // width: 100vw;
-    // padding: 50px;
-    // padding-left: 50px;
-    // padding-top: 50px;
-    // padding-bottom: 50px;
-    // // overflow: hidden;
-
-    .left {
-        flex: 1;
-        // width: 60vw;
-        // height: 100%;
-        // width: 40px;
-        border: rgb(244, 249, 250) solid 90px;
-        border-radius: 12px;
-        h1 {
-            font-size: 80px;
-            color: rgb(59, 9, 241);
-        }
-        // overflow: hidden;
-        // border-radius: 8px;
-        // background-color:rgb(7, 186, 218)
-        // background-image: url();
-        img {
-            height: 100%;
-            // width: 100%;
-            //      height: 100px;
-            // width: 40px;
-            object-fit: cover;
-            border-radius: 4px;
-        }
-    }
-    .right {
-        flex: 3;
-        display: flex;
-        flex-direction: column;
-        // height: 70vh;
-        // width: 60vw;
-        align-items: center;
-        border-radius: 4px;
-        form {
-            display: flex;
-            flex-direction: column;
-            padding: 4px 16px;
-
-            // justify-content: space-between; input[type="text"],
-            select {
-                padding: 15px;
-                box-sizing: border-box;
-                margin-top: 2px;
-                margin-bottom: 16px;
-            }
-
-            // button {
-            //     background-color: #767c7c;
-            //     border: none;
-            //     color: white;
-            //     padding: 12px 25px;
-            //     text-align: center;
-            //     text-decoration: none;
-            //     display: inline-block;
-            //     font-size: 16px;
-            //     margin: 4px 2px;
-            //     transition-duration: 0.4s;
-            //     cursor: pointer;
-            //     border-radius: 8px;
-            // }
-
-            button {
-                margin-top: 15px;
-            }
-            button:hover {
-                cursor: pointer;
-            }
-            input {
-                direction: rtl;
-            }
-        }
-    }
-}
-
 // * {
 //     font-family: -apple-system, BlinkMacSystemFont, "San Francisco", Helvetica, Arial, sans-serif;
 //   font-weight:  300; 
 //   margin:  0; 
+//   padding: 2px;
 // }
 // $primary: rgb(182,157,230); 	
 // html, body {
@@ -241,3 +152,4 @@
 //     margin:  20px; 
 //   }
 // }
+// .st0{fill:#fff;}

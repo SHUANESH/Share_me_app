@@ -1,8 +1,11 @@
+import './register.scss';
 import {useState} from 'react';
 import handleChange from "../../../utils/handleChange";
 import { Link } from "react-router-dom";
 import { hebrewVariables } from "../../../utils/hebrewVariables";
-
+import TextField from '@material-ui/core/TextField';
+import { Button } from '@material-ui/core';
+// import Form from '../form/Form'
 const Register = () => {
   const [userInfo, setUserInfo] = useState({
     firstName: "",
@@ -38,73 +41,82 @@ const Register = () => {
 
   const [isSend, setIsSend] = useState(false);
   return (
-    <>
-      <form
-        className="register-form-form"
+   
+    <div className="container">
+      {/* <Form/> */}
+      <div className="left">
+        <h1>TAKE SHARE</h1>
+        {/* <img src="share.png" alt="logo"/> */}
+      </div>
+      <div className="right">
+      <form 
+        // className="register-form-form"
         onSubmit={(e) => {
           e.preventDefault();
         }}
       >
-        <label>{hebrewVariables.firstName}</label>
-        <input
+        <TextField dir="ltr"
           name="firstName"
           onChange={(e) => handleChange(e, userInfo, setUserInfo)}
           type={"text"}
+          label={hebrewVariables.firstName}
         />
-
-        <label>{hebrewVariables.lastName}</label>
-        <input
+        <TextField
+        
           name="lastName"
           onChange={(e) => handleChange(e, userInfo, setUserInfo)}
           type={"text"}
+          label={hebrewVariables.lastName}
+          size="small"
         />
-
-        <label>{hebrewVariables.email}</label>
-        <input
+        <TextField
           name="email"
           onChange={(e) => handleChange(e, userInfo, setUserInfo)}
           type={"email"}
+          label={hebrewVariables.email}
         />
-        <label>{hebrewVariables.phone}</label>
-        <input
+        <TextField
           name="phone"
           onChange={(e) => handleChange(e, userInfo, setUserInfo)}
           type={"text"}
+          label={hebrewVariables.phone}
         />
-
-        <label>{hebrewVariables.age}</label>
-        <input
+        <TextField
           name="age"
           onChange={(e) => handleChange(e, userInfo, setUserInfo)}
           type={"number"}
+          label={hebrewVariables.age}
         />
-
-        <label>{"ID"}</label>
-        <input
+        <TextField
           name="IdNumber"
           onChange={(e) => handleChange(e, userInfo, setUserInfo)}
           type={"text"}
+          label={"ID"}
         />
-
-        <label>{"role"}</label>
-        <input
+        <TextField
           name="role"
           onChange={(e) => handleChange(e, userInfo, setUserInfo)}
           type={"text"}
           value={userInfo.role}
+          label={"role"}
         />
-
-        <label>{hebrewVariables.password}</label>
-        <input
+        <TextField
           name="password"
           onChange={(e) => handleChange(e, userInfo, setUserInfo)}
           type={"text"}
           value={userInfo.password}
+          label={hebrewVariables.password}
         />
-        <button onClick={sendUserSign}>{"sign in"}</button>
-        <Link to="/">Log in</Link> 
+         <Button variant="outlined" onClick={sendUserSign }color="primary">הרשמי
+ </Button>
+ <Button variant="outlined" color="secondary">התחברי
+ <Link to="/"></Link>
+ </Button>
+        {/* <button onClick={sendUserSign}>{"sign in"}</button>
+        <Link to="/">Log in</Link>  */}
       </form>
-    </>
+      </div>
+      </div>
   );
 }
 
