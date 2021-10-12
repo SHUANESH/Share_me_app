@@ -1,4 +1,5 @@
 const { UserModel, userValid } = require("../../models/userModel");
+const { SendEmails } = require('../../utils/SendEmail')
 const bcrypt = require("bcrypt");
 
 const register = async (req, res) => {
@@ -11,20 +12,20 @@ const register = async (req, res) => {
         message: errorOfReqBody.error.details[0].message,
       });
     }
-  } catch (err) {
+  } catch (err) { 
      console.log(err);
   }
 
   await UserModel.findOne({ email: req.body.email }, (err, result) => {
 
     if (err) throw err;
-    if (result) {
-      return res.status(401).json({
+    if (result) {  
+      return res.status(401).json({ 
         success: false,
         message: "email already exists",
       });
     }
-
+    SendEmails(req,res)
     //Password Encryption Before That it enters to the database
     bcrypt.genSalt(12, (err, salt) => {
       if (err) throw err;
