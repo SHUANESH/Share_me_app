@@ -1,4 +1,7 @@
-import React from 'react'
+import {useState} from 'react';
+import handleChange from "../../../utils/handleChange";
+import { Link } from "react-router-dom";
+import { hebrewVariables } from "../../../utils/hebrewVariables";
 
 const Register = () => {
   const [userInfo, setUserInfo] = useState({
@@ -16,9 +19,9 @@ const Register = () => {
     e.preventDefault();
     try {
       debugger;
-      await fetch("/api/register", {
+        await fetch("/api/register", {
         method: "POST",
-        body: JSON.stringify(userInfo),
+        body: JSON.stringify({...userInfo}),
       })
         .then((response) => {
           if (!response.data) throw response;
@@ -99,7 +102,7 @@ const Register = () => {
           value={userInfo.password}
         />
         <button onClick={sendUserSign}>{"sign in"}</button>
-        {/* {!isSend ? <Link path="/login">Log in</Link> : ""} */}
+        <Link to="/">Log in</Link> 
       </form>
     </>
   );
