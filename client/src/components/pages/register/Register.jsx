@@ -1,19 +1,25 @@
 import './register.scss';
-import {useState} from 'react';
+
 import handleChange from "../../../utils/handleChange";
 import { Link } from "react-router-dom";
 import { hebrewVariables } from "../../../utils/hebrewVariables";
 import TextField from '@material-ui/core/TextField';
 import { Button } from '@material-ui/core';
-// import Form from '../form/Form'
+import {useState, useContext} from 'react';
+import { Context } from "../../../context/Context";
+
+
+import axios from "axios"
+
 const Register = () => {
+  const [isSend, setIsSend] = useState(false);
+  const { dispatch, isFetching } = useContext(Context);
   const [userInfo, setUserInfo] = useState({
     firstName: "",
     lastName: "",
     email: "",
     phone: "",
     password: "",
-    age: 0,
     role: "",
     IdNumber: "",
   });
@@ -22,24 +28,15 @@ const Register = () => {
     e.preventDefault();
     try {
       debugger;
-      await fetch("/api/register", {
-        method: "POST",
-        body: JSON.stringify(userInfo),
+      const res =  axios.post("/api/register" , {
+        ...userInfo
       })
-        .then((response) => {
-          if (!response.data) throw response;
-          return response;
-        })
-        .then((response) => (isSend ? setIsSend(false) : setIsSend(true)))
-        .catch((err) => {
-          throw err;
-        });
+      setIsSend(true)
     } catch (error) {
       console.log(error);
     }
-  };
 
-  const [isSend, setIsSend] = useState(false);
+  };
   return (
    
     <div className="container">
@@ -57,6 +54,7 @@ const Register = () => {
       >
         <TextField dir="ltr"
           name="firstName"
+          value={userInfo.firstName}
           onChange={(e) => handleChange(e, userInfo, setUserInfo)}
           type={"text"}
           label={hebrewVariables.firstName}
@@ -64,6 +62,7 @@ const Register = () => {
         <TextField
         
           name="lastName"
+          value={userInfo.lastName}
           onChange={(e) => handleChange(e, userInfo, setUserInfo)}
           type={"text"}
           label={hebrewVariables.lastName}
@@ -71,12 +70,14 @@ const Register = () => {
         />
         <TextField
           name="email"
+          value={userInfo.email}
           onChange={(e) => handleChange(e, userInfo, setUserInfo)}
           type={"email"}
           label={hebrewVariables.email}
         />
         <TextField
           name="phone"
+          value={userInfo.phone}
           onChange={(e) => handleChange(e, userInfo, setUserInfo)}
           type={"text"}
           label={hebrewVariables.phone}
@@ -89,12 +90,14 @@ const Register = () => {
         />
         <TextField
           name="IdNumber"
+          value={userInfo.IdNumber}
           onChange={(e) => handleChange(e, userInfo, setUserInfo)}
           type={"text"}
           label={"ID"}
         />
         <TextField
           name="role"
+          value={userInfo.role}
           onChange={(e) => handleChange(e, userInfo, setUserInfo)}
           type={"text"}
           value={userInfo.role}
@@ -102,6 +105,7 @@ const Register = () => {
         />
         <TextField
           name="password"
+          value={userInfo.password}
           onChange={(e) => handleChange(e, userInfo, setUserInfo)}
           type={"text"}
           value={userInfo.password}

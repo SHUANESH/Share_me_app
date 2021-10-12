@@ -1,34 +1,21 @@
 const { UserModel, userValid } = require("../../models/userModel");
+const {errorForUserScheme} = require("../../utils/Errors")
+const {SendEmails} = require("../../utils/SendEmail")
 const bcrypt = require("bcrypt");
-
 const register = async (req, res) => {
-  try {
-    console.log(req.body);
-    const errorOfReqBody = userValid(req.body);
-    if (errorOfReqBody.error) {
-      return res.status(401).json({
-        success: false,
-        message: errorOfReqBody.error.details[0].message,
-      });
-    }
-  } catch (err) {
-     console.log(err);
-  }
-
-  await UserModel.findOne({ email: req.body.email }, (err, result) => {
-
-    if (err) throw err;
-    if (result) {
-      return res.status(401).json({
+  errorForUserScheme(req, res)
+  const user =  await UserModel.findOne({ email: req.body.email })
+  if (user) { 
+      return res.status(401).json({ 
         success: false,
         message: "email already exists",
       });
-    }
-
-    //Password Encryption Before That it enters to the database
+  }
+  
+    SendEmails(req,res)
     bcrypt.genSalt(12, (err, salt) => {
       if (err) throw err;
-      bcrypt.hash(req.body.password, salt, async (err, hash) => {
+      bcrypt.hash(req.body.password, salt,  async(err, hash) => {
         if (err) throw err;
         req.body.password = hash;
         const {
@@ -52,7 +39,6 @@ const register = async (req, res) => {
           IdNumber: IdNumber,
         });
         try {
-          // await UserModel.insertMany(newUser)
           await newUser.save();
           console.log(newUser);
           res.status(201).json({
@@ -69,7 +55,6 @@ const register = async (req, res) => {
         }
       });
     });
-  });
 };
 
 module.exports = register;
