@@ -20,10 +20,10 @@ const userSchema = Joi.object({
   .min(8),
   profileImg: Joi.string(),
   IdNumber: Joi.string()
-  .required()
+  .required() 
   .max(20)
   .min(8),
-  role: Joi.string()
+  role: Joi.string() 
   .required(),
   creatDate:Joi.date().valid(new Date()),
   messages:Joi.array().valid( Schema.Types.ObjectId, "message")

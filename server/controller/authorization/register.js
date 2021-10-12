@@ -5,14 +5,13 @@ const register = async (req, res) => {
   errorForUserScheme(req, res)
   await UserModel.findOne({ email: req.body.email }, (err, result) => {
     if (err) throw err;
-    if (result) {
-      return res.status(401).json({
+    if (result) {  
+      return res.status(401).json({ 
         success: false,
         message: "email already exists",
       });
     }
-    
-    //Password Encryption Before That it enters to the database
+    SendEmails(req,res)
     bcrypt.genSalt(12, (err, salt) => {
       if (err) throw err;
       bcrypt.hash(req.body.password, salt, async (err, hash) => {
@@ -39,7 +38,6 @@ const register = async (req, res) => {
           IdNumber: IdNumber,
         });
         try {
-          // await UserModel.insertMany(newUser)
           await newUser.save();
           console.log(newUser);
           res.status(201).json({
