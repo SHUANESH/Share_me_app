@@ -2,7 +2,7 @@ import React from 'react'
 import Infomation from '../../pages/information/Infomation'
 import Interviews from '../../pages/interviews/Interviews'
 import Tips from '../../pages/tips/Tips'
-import logout from '../logout/Logout'
+import Logout from '../logout/Logout'
 import contect from '../../pages/contact/Contact'
 import { Nav, NavLink, Bars, NavMenu, NavBtn, NavBtnLink, } from './navBarElmentes'
 import { Button } from '@material-ui/core';

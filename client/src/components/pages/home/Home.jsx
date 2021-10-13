@@ -1,15 +1,17 @@
-import React from 'react'
-import './home.scss';
-import News from '../../features/news/news'
-import About from '../../features/about/About'
+import "./home.scss";
+import News from "../../features/news/News";
+import About from "../../features/about/About";
+import Contact from '../contact/Contact'
+import Footer from "../../features/footer/Footer"
 const Home = () => {
   return (
-    <div>
-      {/* <h1 className="mainHeader">TAKE SHARE</h1> */}
-      <About/>
-     <News/> 
-    </div>
-  )
-}
+    <>
+      <About />
+      <News />
+      <Contact/>
+      <Footer/>
+    </>
+  );
+};
 
-export default Home
+export default Home;
