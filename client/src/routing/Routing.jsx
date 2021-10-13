@@ -14,18 +14,20 @@ import Footer from "../components/features/footer/Footer";
 const Routing = () => {
     const {user} = useContext(Context);
     return (
-    <ContextProvider>
-          <NavBar/>
-          <Footer/>
-            <Switch>
-                <Route  path='/register'> <Register /> </Route>
-                <Route  exact path='/login'>{user? <Home/> : <Login />}</Route>
-                <Route  path='/'>{user? <Home/> : <Login />}</Route>
-                <Route  path='/interview' >{user? <Interview/> : <Login />}</Route>
-                <Route  path='/information'>{user? <Information/> : <Login />}</Route>
-                {/* <Route  path='/tips'>{user? <Tips/> : <Login />}</Route> */}
-            </Switch>
-    </ContextProvider>
+        <ContextProvider>
+            <NavBar/>
+            <Footer/>
+        <Switch>
+            {/* <Route path="/forum/:id" component={PostDetails} />
+            <Route path="/forum" component={Forum} /> */}
+            <Route  exact path='/login'> <Home/> </Route>
+            <Route  path='/register'> <Register /> </Route>
+            <Route  path='/'> <Home/> </Route>
+            <Route  path='/interview' ><Interview/></Route>
+            <Route  path='/information'><Information/> </Route>
+            <Route  path='/tips'> <Tips/> </Route>
+        </Switch>
+</ContextProvider>
     )
 }
 

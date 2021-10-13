@@ -16,7 +16,7 @@ const Navbar = () => {
         <>
             <Nav>
             <NavLink to='/'>
-            <HomeIcon style={{ fontSize: 60 , color:"#256ce1" }}/>
+            <HomeIcon />
                 </NavLink> 
                 <Bars />
                 <NavMenu>
@@ -35,4 +35,4 @@ const Navbar = () => {
 
 
 
-export default Navbar
+export default Navbar;
