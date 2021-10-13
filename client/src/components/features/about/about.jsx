@@ -1,11 +1,12 @@
 import React from 'react'
+import './About.scss'
 
-const about = () => {
+const About = () => {
     return (
         <div>
-            
+
         </div>
     )
 }
 
-export default about
+export default About

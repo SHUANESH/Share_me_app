@@ -19,24 +19,24 @@ const Register = () => {
   });
 
   const sendUserSign = async (e) => {
-    e.preventDefault();
-    try {
-      debugger;
-      const res = await axios.post("/api/register" , {
-        ...userInfo
-      })
-      setUserInfo({
-        firstName: "",
-        lastName: "",
-        email: "",
-        phone: "",
-        password: "",
-        role: "",
-        IdNumber: "",
-      })
-    } catch (error) {
-      console.log(error);
-    }
+    // e.preventDefault();
+    // try {
+    //   debugger;
+    //   const res = await axios.post("/api/register" , {
+    //     ...userInfo
+    //   })
+    //   setUserInfo({
+    //     firstName: "",
+    //     lastName: "",
+    //     email: "",
+    //     phone: "",
+    //     password: "",
+    //     role: "",
+    //     IdNumber: "",
+    //   })
+    // } catch (error) {
+    //   console.log(error);
+    // }
 
   };
   return (
