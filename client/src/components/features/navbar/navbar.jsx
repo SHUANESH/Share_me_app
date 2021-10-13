@@ -2,11 +2,12 @@ import React from 'react'
 import Infomation from '../../pages/information/Infomation'
 import Interviews from '../../pages/interviews/Interviews'
 import Tips from '../../pages/tips/Tips'
-import logout from '../logout/logout'
-import contect from '../../pages/contect/contect'
+import logout from '../logout/Logout'
+import contect from '../../pages/contact/Contact'
 import { Nav, NavLink, Bars, NavMenu, NavBtn, NavBtnLink, } from './navBarElmentes'
 import { Button } from '@material-ui/core';
 import HomeIcon from '@mui/icons-material/Home';
+import { Context } from "../../../context/Context";
 
 
 
@@ -19,21 +20,13 @@ const Navbar = () => {
                 </NavLink> 
                 <Bars />
                 <NavMenu>
-                    <Button color="primary" variant="text" ><NavLink to="Infomation" activeStyle>Infomation</NavLink></Button>
+                    <Button color="primary" variant="text" ><NavLink to="Infomation" activeStyle>Stack Overflow</NavLink></Button>
+                    <Button color="primary" variant="text" > <NavLink to="/Interviews" activeStyle>ראיונות</NavLink></Button>
+                    <Button color="primary" variant="text" >  <NavLink to="/Tips" activeStyle>טיפים</NavLink></Button>
+                    <Button color="primary" variant="text" >   <NavLink to="/contect" activeStyle>צור קשר</NavLink></Button>
                 </NavMenu>
-                <NavMenu>
-                    <Button color="primary" variant="text" > <NavLink to="/Interviews" activeStyle>Interviews</NavLink></Button>
-                </NavMenu>
-                <NavMenu>
-                    <Button color="primary" variant="text" >  <NavLink to="/Tips" activeStyle>Tips</NavLink></Button>
-                </NavMenu>
-                <NavMenu>
-                    <Button color="primary" variant="text" >   <NavLink to="/contect" activeStyle>Contect us</NavLink></Button>
-                </NavMenu>
-               
-
                 <NavBtn>
-                    <NavBtnLink to="/Logout">Logout</NavBtnLink>
+                    <NavBtnLink to="/Logout">התנתק</NavBtnLink>
                 </NavBtn>
             </Nav>
         </>

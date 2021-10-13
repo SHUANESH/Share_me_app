@@ -1,11 +1,16 @@
 import React from 'react'
+import './footer.scss';
+
+
 
 const Footer = () => {
-    return (
-        <div>
-            
-        </div>
-    )
+  return (
+    <div>
+      <footer>
+      © 2021 Copyright : Take-Share
+      </footer>
+    </div>
+  )
 }
 
-export default Footer
+export default Footer;
