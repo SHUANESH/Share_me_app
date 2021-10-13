@@ -8,10 +8,9 @@ $bp-lg: 800px;
 :root {
   --d: 700ms;
   --e: cubic-bezier(0.19, 1, 0.22, 1);
-  --font-sans: 'Rubik', sans-serif;
-  --font-serif: 'Cardo', serif;
 }
 
+<<<<<<< HEAD
 * {
   box-sizing: border-box;
 }
@@ -19,26 +18,31 @@ $bp-lg: 800px;
 // html, body {
 //   height: 100%;
 // }
+=======
+>>>>>>> c64a377f8a518624a395064e3f55e4c020042c98
 .imgNews{
     width: 100%;
     height: 150%;
-    // object-fit: cover;
-}
+  }
 .mainTitle{
     text-align: center;
     color: rgb(6, 6, 112);
 }
+<<<<<<< HEAD
 // body {
 //   display: grid;
 //   place-items: center;
 // }
+=======
+>>>>>>> c64a377f8a518624a395064e3f55e4c020042c98
 
 .page-content {
   display: grid;
-  grid-gap: 1rem;
+  grid-gap: 2rem;
   padding: 1rem;
   max-width: 1024px;
   margin: 0 auto;
+  
   font-family: var(--font-sans);
   
   @media (min-width: $bp-md) {
@@ -46,7 +50,9 @@ $bp-lg: 800px;
   }
   
   @media (min-width: $bp-lg) {
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(3, 1fr);
+    padding: 50px;
+    
   }
 }
 
@@ -58,10 +64,12 @@ $bp-lg: 800px;
   align-items: flex-end;
   overflow: hidden;
   padding: 1rem;
+  background-color: white;
+  // height: 250px;
   width: 100%;
   text-align: center;
-  color: whitesmoke;
-  background-color: whitesmoke;
+  color: rgb(255, 255, 255);
+  // background-color: rgb(12, 12, 200);
   box-shadow: 0 1px 1px rgba(0,0,0,0.1), 
     0 2px 2px rgba(0,0,0,0.1), 
     0 4px 4px rgba(0,0,0,0.1), 
@@ -69,7 +77,9 @@ $bp-lg: 800px;
     0 16px 16px rgba(0,0,0,0.1);
   
   @media (min-width: $bp-md) {
-    height: 350px;
+    height: 450px;
+    background-color: rgb(165, 242, 255);
+padding: 8px;
   }
   
   &:before {
@@ -96,9 +106,9 @@ $bp-lg: 800px;
     pointer-events: none;
     background-image: linear-gradient(
       to bottom,
-      hsla(0, 0%, 0%, 0) 0%,
-      hsla(0, 0%, 0%, 0.009) 11.7%,
-      hsla(0, 0%, 0%, 0.034) 22.1%,
+      hsla(0, 83%, 43%, 0) 0%,
+      hsla(115, 100%, 50%, 0.009) 11.7%,
+      hsla(0, 23%, 33%, 0.034) 22.1%,
       hsla(0, 0%, 0%, 0.072) 31.2%,
       hsla(0, 0%, 0%, 0.123) 39.4%,
       hsla(0, 0%, 0%, 0.182) 46.6%,
@@ -121,7 +131,8 @@ $bp-lg: 800px;
     $i: index($imageIds, $id);
     
     &:nth-child(#{$i}):before {
-      background-image: url(https://images.unsplash.com/photo-#{$id}?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=400&fit=max&ixid=eyJhcHBfaWQiOjE0NTg5fQ);
+      // background-image: url(https://images.unsplash.com/photo-#{$id}?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=400&fit=max&ixid=eyJhcHBfaWQiOjE0NTg5fQ);
+      background-color: rgb(165, 242, 255);
     }
   }
 }
@@ -162,18 +173,20 @@ $bp-lg: 800px;
   font-weight: bold;
   letter-spacing: 0.025rem;
   text-transform: uppercase;
-  color: white;
-  background-color: black;
+  text-decoration: none;
+  color: rgb(0, 0, 0);
+  background-color: rgb(255, 255, 255);
   border: none;
   
   &:hover {
+    color: white;
     background-color: lighten(black, 5%);
   }
   
-  &:focus {
-    outline: 1px dashed yellow;
-    outline-offset: 3px;
-  }
+  // &:focus {
+  //   outline: 1px dashed yellow;
+  //   outline-offset: 3px;
+  // }
 }
 
 @media (hover: hover) and (min-width: $bp-md) {
