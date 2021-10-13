@@ -6,7 +6,7 @@ import {
   updatePost,
 } from "../../../../Redux/actions/postsActions";
 import { useHistory } from "react-router-dom";
-import "./form.css";
+import "./form.scss";
 const ForumFormComponent = ({ currentId, setCurrentId }) => {
   const history = useHistory();
   const [postData, setPostData] = useState({
@@ -57,8 +57,8 @@ const ForumFormComponent = ({ currentId, setCurrentId }) => {
     });
   };
   return (
-    <div id="form-div">
-      <form onSubmit={handleSubmit} className="forum-form" id="form1">
+    <div id="form-div" dir="rtl">
+      <form onSubmit={handleSubmit}  className="forum-form" id="form1">
         <p className="name">
           <input
             name="title"
@@ -83,17 +83,18 @@ const ForumFormComponent = ({ currentId, setCurrentId }) => {
               setPostData({ ...postData, message: e.target.value })
             }
           ></input>
-          <select
+        
+        </p>
+        <select
             onSelect={(e) =>
               setPostData({ ...postData, message: e.target.value })
             }
           >
             <option>נושא ההודעה</option>
-            <option>{"interview"}</option>
-            <option>{"information"}</option>
-            <option>{"tips"}</option>
+            <option>{"Stack Overflow"}</option>
+            <option>{"ראיונות"}</option>
+            <option>{"טיפים"}</option>
           </select>
-        </p>
 
         <div className="submit">
           <button type="submit" value="SEND" id="button-forum-submit">

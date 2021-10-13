@@ -1,8 +1,10 @@
 .posts{
     list-style-type: none;
-    width: 100%;
+    width: 80%;
     display: flex;
     flex-wrap: wrap;
     flex-direction: column;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    margin: auto ;
+    padding: 20px;
 }

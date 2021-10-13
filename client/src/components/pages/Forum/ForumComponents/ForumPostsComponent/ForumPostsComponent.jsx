@@ -5,7 +5,6 @@ import { useSelector } from "react-redux";
 import "./posts.css";
 
 const ForumPostsComponent = ({ setCurrentId }) => {
-  debugger;
   const { posts, isLoading } = useSelector((state) => state.posts);
   console.log(posts)
   if(!posts.length && !isLoading) return "No Posts";
@@ -15,7 +14,7 @@ const ForumPostsComponent = ({ setCurrentId }) => {
     <ul className="posts">
      
       {posts?.map((post,index) => (
-        <li key={index}>
+        <li key={index} id="li-ForumPostComponent">
           <ForumPostComponent post={post} setCurrentId={setCurrentId} />
         </li>
       ))}

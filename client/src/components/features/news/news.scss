@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css?family=Cardo:400i|Rubik:400,700&display=swap');
 
-$imageIds: '1517021897933-0e0319cfbc28', '1533903345306-15d1c30952de', '1545243424-0ce743321e11', '1531306728370-e2ebd9d7bb99';
+$imageIds: '1517021897933-0e0319cfbc28', '1533903345306-15d1c30952de', '1545243424-0ce743321e11', '1531306728370-e2ebd9d7bb99','1517021897933-0e0319cfbc28', '1533903345306-15d1c30952de';
 
 $bp-md: 600px;
 $bp-lg: 800px;
@@ -33,7 +33,7 @@ $bp-lg: 800px;
   }
   
   @media (min-width: $bp-lg) {
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(4, 1fr);
     padding: 50px;
     
   }
@@ -41,14 +41,14 @@ $bp-lg: 800px;
 
 
 
-.card {  
+.news-card {  
   position: relative;
   display: flex;
   align-items: flex-end;
   overflow: hidden;
   padding: 1rem;
   background-color: white;
-  // height: 250px;
+  height: 80%;
   width: 100%;
   text-align: center;
   color: rgb(255, 255, 255);
@@ -114,7 +114,7 @@ padding: 8px;
     $i: index($imageIds, $id);
     
     &:nth-child(#{$i}):before {
-      // background-image: url(https://images.unsplash.com/photo-#{$id}?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=400&fit=max&ixid=eyJhcHBfaWQiOjE0NTg5fQ);
+      background-image: url(https://images.unsplash.com/photo-#{$id}?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=400&fit=max&ixid=eyJhcHBfaWQiOjE0NTg5fQ);
       background-color: rgb(165, 242, 255);
     }
   }
@@ -136,7 +136,9 @@ padding: 8px;
 }
 
 .title {
-  font-size: 1rem;
+  font-size: 0.9rem;
+  width: 40%;
+  text-align: center;
   font-weight: bold;
   line-height: 1.2;
 }
@@ -173,7 +175,7 @@ padding: 8px;
 }
 
 @media (hover: hover) and (min-width: $bp-md) {
-  .card:after {
+  .news-card:after {
     transform: translateY(0);
   }
   
@@ -189,8 +191,8 @@ padding: 8px;
     }
   }
   
-  .card:hover,
-  .card:focus-within {
+  .news-card:hover,
+  .news-card:focus-within {
     align-items: center;
 
     &:before { transform: translateY(-4%); }
@@ -207,7 +209,7 @@ padding: 8px;
     }
   }
   
-  .card:focus-within {
+  .news-card:focus-within {
     &:before,
     &:after,
     .content,
