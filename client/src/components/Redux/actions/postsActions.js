@@ -39,37 +39,6 @@ export const getPosts = (page) => async (dispatch) => {
   dispatch({ type: STOP_LOADING });
 };
 
-// export const createPostStaff = (post, history) => async (dispatch) => {
-//   dispatch({ type: START_LOADING });
-//   const token = localStorage.getItem("jwtToken");
-//   const user = jwt_decode(token);
-//   try {
-//     await fetch(`/api/forum/staff`, {
-//       method: "POST",
-//       body: JSON.stringify({
-//         post,
-//         _id: user._id,
-//         role: user.role,
-//       }),
-//       headers: {
-//         "Content-Type": "application/json",
-//         Authorization: `Bearer ${localStorage.getItem("jwtToken")}`,
-//       },
-//     })
-//       .then((res) => res.json())
-//       .then((res) => {
-//         dispatch({
-//           type: CREATE,
-//           payload: res.data,
-//         });
-//         history.push(`/forum/${res.data._id}`);
-//       });
-//       dispatch({ type: STOP_LOADING });
-//   } catch (error) {
-//     console.log(error);
-//   }
-// };
-
 export const createPostUser = (post, history) => async (dispatch) => {
   const token = localStorage.getItem("jwtToken");
   const user = jwt_decode(token);

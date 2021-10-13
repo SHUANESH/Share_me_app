@@ -63,12 +63,9 @@
 
 // export default Login;
 
-
-
-import React, { useState } from "react";
+import { useState } from "react";
 import { getUser } from "../../Redux/actions/userActions";
 import { useDispatch, useSelector } from "react-redux";
-
 import "./login.scss";
 import handleChange from "../../../utils/handleChange";
 import { hebrewVariables } from "../../../utils/hebrewVariables";
@@ -81,71 +78,108 @@ const Login = () => {
     password: "",
   });
   return (
-    <form id="stripe-login">
-    <div className="field padding-bottom--24">
-      <label htmlFor="email">{hebrewVariables.email}</label>
-      <input
-        type="email"
-        name="email"
-        value={loginInfo.email}
-        onChange={(e) =>
-          handleChange(e, loginInfo, setLoginInfo)
-        }
-        required
-      />
-      <p className="errors">{errors?.email}</p>
-    </div>
-    <div className="field padding-bottom--24">
-    <label htmlFor="password">{hebrewVariables.password}</label>
-      <input
-        type="password"
-        name="password"
-        onChange={(e) =>
-          handleChange(e, loginInfo, setLoginInfo)
-        }
-        value={loginInfo.password}
-        autoComplete="off"
-        required
-      />
-      <p className="errors">{errors?.password}</p>
-    </div>
-    {/* <div>
-      <p>{hebrewVariables.loginAs}</p>
-      <label>
-        <input
-          type="radio"
-          onChange={(e) =>
-            handleChange(e, loginInfo, setLoginInfo)
-          }
-          name="role"
-          value="Student"
-        />
-        {hebrewVariables.student}
-      </label>
-      <label>
-        <input
-          type="radio"
-          onChange={(e) =>
-            handleChange(e, loginInfo, setLoginInfo)
-          }
-          name="role"
-          value="Staff"
-        />
-        {hebrewVariables.staff}
-      </label>
-    </div> */}
-    <div className="field padding-bottom--24">
-      <input
-        type="submit"
-        name="submit"
-        value="Continue"
-        onClick={(e) => {
-          e.preventDefault();
-          dispatch(getUser(loginInfo));
-        }}
-      />
-    </div>
-  </form>
+    <>
+      <div className="container">
+        <div className="info">
+          <h1>TAKE-SHARE</h1>
+          <span>
+            מקום מעולה לשתף בו ידע <i className="fa fa-heart"></i>
+          </span>
+        </div>
+      </div>
+      <div className="form">
+        <div className="thumbnail">
+          <img
+            src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/169963/hat.svg"
+            alt="study"
+          />
+        </div>
+        {/* <form className="register-form">
+    <input type="text" placeholder="name"/>
+    <input type="password" placeholder="password"/>
+    <input type="text" placeholder="email address"/>
+    <button>create</button>
+    <p className="message">Already registered? <a href="#">Sign In</a></p>
+  </form> */}
+        <form className="login-form">
+          <label htmlFor="email">{hebrewVariables.email}</label>
+          <input
+            type="email"
+            name="email"
+            value={loginInfo.email}
+            onChange={(e) => handleChange(e, loginInfo, setLoginInfo)}
+            required
+          />
+          <p className="errors">{errors?.email}</p>
+          <label htmlFor="email">{hebrewVariables.password}</label>
+          <input
+            type="password"
+            name="password"
+            onChange={(e) => handleChange(e, loginInfo, setLoginInfo)}
+            value={loginInfo.password}
+            autoComplete="off"
+            required
+          />
+          <p className="errors">{errors?.password}</p>
+          <button
+            className="bottom-login"
+            type="submit"
+            onClick={(e) => {
+              e.preventDefault();
+              dispatch(getUser(loginInfo));
+            }}
+          >
+            התחבר
+          </button>
+          <p className="message">
+            Not registered? <a href="#">Create an account</a>
+          </p>
+        </form>
+      </div>
+      {/* 
+<video id="video" autoplay="autoplay" loop="loop" poster="polina.jpg">
+  <source src="http://andytran.me/A%20peaceful%20nature%20timelapse%20video.mp4" type="video/mp4"/>
+</video> */}
+    </>
+    //   <form id="stripe-login">
+    //   <div classNameName="field padding-bottom--24">
+    //     <label htmlFor="email">{hebrewVariables.email}</label>
+    //     <input
+    //       type="email"
+    //       name="email"
+    //       value={loginInfo.email}
+    //       onChange={(e) =>
+    //         handleChange(e, loginInfo, setLoginInfo)
+    //       }
+    //       required
+    //     />
+    //     <p className="errors">{errors?.email}</p>
+    //   </div>
+    //   <div className="field padding-bottom--24">
+    //     <input
+    //       type="password"
+    //       name="password"
+    //       onChange={(e) =>
+    //         handleChange(e, loginInfo, setLoginInfo)
+    //       }
+    //       value={loginInfo.password}
+    //       autoComplete="off"
+    //       required
+    //     />
+    //     <p className="errors">{errors?.password}</p>
+    //   </div>
+    //   <div className="field padding-bottom--24">
+    //     <input
+    //       type="submit"
+    //       name="submit"
+    //       value="Continue"
+    //       onClick={(e) => {
+    //         e.preventDefault();
+    //         dispatch(getUser(loginInfo));
+    //       }}
+    //     />
+    //   </div>
+    // </form>
   );
 };
 export default Login;

@@ -1,7 +1,30 @@
-import { SET_USER, SET_USER_ERRORS, UPDATE_USER } from './types';
+import { SET_USER, SET_USER_ERRORS, UPDATE_USER,CREATE_USER, CREATE_USER_ERRORS} from './types';
 import jwt_decode from "jwt-decode";
 import fetcher from '../../../utils/fetcher';
 import checkToken from '../../../utils/currentTime ';
+
+
+export const createUser = (newStudent) => async dispatch => {
+    try {
+        await fetcher("/api/register", {
+            method: 'POST',
+            body: JSON.stringify(newStudent),
+        })
+            .then((response) => {
+                if (!response.data) throw response
+                return response
+            })
+            .then((response) => dispatch({
+                type: CREATE_USER,
+                payload: response.data,
+            }))
+            .catch((err) => { throw err });
+    }
+    catch (error) {
+        dispatch({ type: CREATE_USER_ERRORS, payload: error.errors || error })
+    }
+}
+
 
 export const getUser = (loginInfo) => async dispatch => {
     try {

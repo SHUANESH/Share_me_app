@@ -2,6 +2,8 @@
 export const SET_USER = "SET_USER";
 export const SET_USER_ERRORS = "SET_USER_ERRORS";
 export const UPDATE_USER = "UPDATE_USER";
+export const CREATE_USER = "CREATE_USER";
+export const CREATE_USER_ERRORS = "CREATE_USER_ERRORS";
 
 
 //forum constants
