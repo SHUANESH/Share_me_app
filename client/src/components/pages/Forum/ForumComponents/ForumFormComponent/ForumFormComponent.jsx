@@ -89,9 +89,9 @@ const ForumFormComponent = ({ currentId, setCurrentId }) => {
             }
           >
             <option>נושא ההודעה</option>
-            <option>{"interview"}</option>
-            <option>{"information"}</option>
-            <option>{"tips"}</option>
+            <option>{"Stack Overflow"}</option>
+            <option>{"ראיונות"}</option>
+            <option>{"טיפים"}</option>
           </select>
         </p>
 

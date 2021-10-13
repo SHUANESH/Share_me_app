@@ -13,7 +13,6 @@ import jwt_decode from "jwt-decode";
 
 
 export const getPost = (id) => async (dispatch) => {
-  debugger;
   dispatch({ type: START_LOADING });
   await fetcher(`/api/forum/${id}`)
     .then((response) => {
@@ -98,7 +97,6 @@ export const updatePost = (id, post) => async (dispatch) => {
 };
 
 export const commentPost = (id, value) => async (dispatch) => {
-  debugger;
   const token = localStorage.getItem("jwtToken");
   const user = jwt_decode(token);
   try {
