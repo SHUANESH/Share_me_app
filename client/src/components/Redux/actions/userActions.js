@@ -17,7 +17,9 @@ export const createUser = (newStudent) => async dispatch => {
             .then((response) => dispatch({
                 type: CREATE_USER,
                 payload: response.data,
-            }))
+            })).then(()=>{
+                window.location.pathname = '/login'
+            })
             .catch((err) => { throw err });
     }
     catch (error) {
@@ -41,7 +43,9 @@ export const getUser = (loginInfo) => async dispatch => {
                     if (!response.data) throw response
                     return response
                 })
-                .then((response) => localStorage.setItem("jwtToken", response.data))
+                .then((response) => localStorage.setItem("jwtToken", response.data)).then(()=>{
+                    window.location.pathname = '/'
+                })
                 .catch(err => { throw err })
         }
 

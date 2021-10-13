@@ -26,9 +26,6 @@ const messageSchema = new Schema(
       default: Date.now,
       index: { expires: "365d" },
     },
-    kindOfMessage: {
-     type:String
-    },
     comments: { type: [String], default: [] },
     authorByUser: { type: Schema.Types.ObjectId, ref: "user" },
   },

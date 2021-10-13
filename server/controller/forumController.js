@@ -1,9 +1,9 @@
-const MessageModel = require('../models/messageModel')
-const {UserModel} = require('../models/userModel')
-const {nullError , nullVariable ,isEmptyId} = require("../utils/Errors")
+const MessageModel = require("../models/messageModel");
+const { UserModel } = require("../models/userModel");
+const { nullError, nullVariable, isEmptyId } = require("../utils/Errors");
 // const getAllMessage = async (req,res) => {
 //   try {
-    
+
 //     messageModel.find({}).then((result) => {
 //       res.status(200).json({
 //         success: true,
@@ -11,7 +11,7 @@ const {nullError , nullVariable ,isEmptyId} = require("../utils/Errors")
 //         data: result,
 //       });
 //     })
-   
+
 //   } catch (err) {
 //  res.status(500).json({
 //       success: false,
@@ -34,7 +34,7 @@ const {nullError , nullVariable ,isEmptyId} = require("../utils/Errors")
 //         // currentPage: Number(page),
 //         // numberOfPages: Math.ceil(total / LIMIT),
 //       // });
-//     // }) 
+//     // })
 //       // .sort({ _id: -1 })
 //       // .limit(LIMIT)
 //       // .skip(startIndex);
@@ -47,7 +47,7 @@ const {nullError , nullVariable ,isEmptyId} = require("../utils/Errors")
 //   // }
 // }
 // const createMessagesByStudent = async (req, res) => {
-//     try { 
+//     try {
 //       const user = await UserModel.findById({_id:"616554a66d26b599b0ca8f99"});
 //       if (!user) throw "user not fond"
 //       console.log(user);
@@ -84,8 +84,8 @@ const {nullError , nullVariable ,isEmptyId} = require("../utils/Errors")
 //       res.json({msg:"delete message"})
 //     })
 
-//   } catch (err) { 
-//     res 
+//   } catch (err) {
+//     res
 //     .status(400)
 //     .json({
 //       success: false,
@@ -123,8 +123,8 @@ const {nullError , nullVariable ,isEmptyId} = require("../utils/Errors")
 //         data: result,
 //       });
 //     })
-//   } catch (err) { 
-//     res 
+//   } catch (err) {
+//     res
 //     .status(400)
 //     .json({
 //       success: false,
@@ -133,7 +133,7 @@ const {nullError , nullVariable ,isEmptyId} = require("../utils/Errors")
 //     });
 //     console.log(error)
 //   }
-  
+
 // }
 // module.exports = {
 //   createMessagesByStudent,
@@ -143,70 +143,67 @@ const {nullError , nullVariable ,isEmptyId} = require("../utils/Errors")
 //   getMessageById
 // }
 
-
-
 const messagesUser = async (req, res) => {
-  try { 
-  isEmptyId(req.body._id)  
-  const user = await MessageModel.findById(req.body._id);
-  nullVariable(user);
-  const newMessages = new MessageModel({
-    firstName: req.body.post.firstName,
-    email: req.body.post.email,
-    title: req.body.post.title,
-    message: req.body.post.message,
-    authorByUser: user._id,
-  });
+  try {
+    isEmptyId(req.body._id);
+    const user = await UserModel.findById(req.body._id);
+    console.log(user);
+    console.log(req.body.post);
+    nullVariable(user);
+    const newMessages = new MessageModel({
+      fullName: `${user.firstName} ${user.lastName}`,
+      email: req.body.post.email,
+      title: req.body.post.title,
+      message: req.body.post.message,
+      authorByUser: user._id,
+      messageType: req.body.post.messageType,
+    });
     await newMessages.save();
     user.messages.push(newMessages);
     await user.save();
-    res
-      .status(201)
-      .json({
-        success: true,
-        message: "create new message success",
-        data: newMessages
-      });
+    res.status(201).json({
+      success: true,
+      message: "create new message success",
+      data: newMessages,
+    });
   } catch (err) {
-    res
-      .status(400)
-      .json({
-        success: false,
-        message: "create new message filed",
-        error: err.message
-      });
+    res.status(400).json({
+      success: false,
+      message: "create new message filed",
+      error: err.message,
+    });
   }
 };
 const getAllMessages = async (req, res) => {
+  console.log(req.query);
   const { page } = req.query;
   try {
     const LIMIT = 8;
     const startIndex = (Number(page) - 1) * LIMIT; //get the starting index of every page
     const total = await MessageModel.countDocuments({});
 
-    await MessageModel.find({}, (err, result) => {
-      if (err) throw err;
+    const message = await MessageModel.find({});
+    nullVariable(message);
+    if (message) {
       res
         .status(200)
         .json({
           success: true,
           message: "success",
-          data: result,
+          data: message,
           currentPage: Number(page),
           numberOfPages: Math.ceil(total / LIMIT),
-        });
-    })
-      .sort({ _id: -1 })
-      .limit(LIMIT)
-      .skip(startIndex);
+        })
+        .sort({ _id: -1 })
+        .limit(LIMIT)
+        .skip(startIndex);
+    }
   } catch (err) {
-    res
-      .status(500)
-      .json({
-        success: false,
-        message: "problem in database",
-        error: err.message
-      });
+    res.status(500).json({
+      success: false,
+      message: "problem in database",
+      error: err.message,
+    });
   }
 };
 const deleteMessage = async (req, res) => {
@@ -214,22 +211,18 @@ const deleteMessage = async (req, res) => {
     isEmptyId(req.params.id);
     await MessageModel.findByIdAndDelete(req.params.id, (err, result) => {
       if (err) throw err;
-      res
-        .status(200)
-        .json({
-          success: true,
-          message: "delete message success",
-          result: result
-        });
+      res.status(200).json({
+        success: true,
+        message: "delete message success",
+        result: result,
+      });
     });
   } catch (err) {
-    res
-      .status(400)
-      .json({
-        success: false,
-        message: "delete message failed",
-        error: err.message
-      });
+    res.status(400).json({
+      success: false,
+      message: "delete message failed",
+      error: err.message,
+    });
   }
 };
 const updateMessage = async (req, res) => {
@@ -242,57 +235,48 @@ const updateMessage = async (req, res) => {
       { new: true },
       (err, result) => {
         if (err) throw err;
-        res
-          .status(200)
-          .json({
-            success: true,
-            message: "updated message success",
-            data: result
-          });
+        res.status(200).json({
+          success: true,
+          message: "updated message success",
+          data: result,
+        });
       }
     );
   } catch (err) {
-    res
-      .status(400)
-      .json({
-        success: false,
-        message: "problem with update",
-        error: err.message
-      });
+    res.status(400).json({
+      success: false,
+      message: "problem with update",
+      error: err.message,
+    });
   }
 };
 const getPost = async (req, res) => {
   try {
-    isEmptyId(req.params.id)
-    await MessageModel.findById(req.params.id, (err, result) => {
-      if (err) throw err;
-      res
-        .status(200)
-        .json({
-          success: true,
-          message: "get message success",
-          data: result
-        });
-    });
+    isEmptyId(req.params.id);
+   const message =  await MessageModel.findById(req.params.id);
+   nullVariable(message);
+   nullError(message,res);
   } catch (err) {
-    res
-      .status(400)
-      .json({
-        success: false,
-        message: "get message failed",
-        error: err.message
-      });
+    res.status(400).json({
+      success: false,
+      message: "get message failed",
+      error: err.message,
+    });
   }
 };
 const commentPost = async (req, res) => {
-  isEmptyId(req.params.id)
+  isEmptyId(req.params.id);
   const { value } = req.body;
   const post = await MessageModel.findById(req.params.id);
   post.comments.push(value);
-  const updatedPost = await MessageModel.findByIdAndUpdate(req.params.id, post, {
-    new: true,
-  });
-  res.json(updatedPost)
+  const updatedPost = await MessageModel.findByIdAndUpdate(
+    req.params.id,
+    post,
+    {
+      new: true,
+    }
+  );
+  res.json(updatedPost);
 };
 
 module.exports = {
@@ -302,4 +286,4 @@ module.exports = {
   getAllMessages,
   deleteMessage,
   updateMessage,
-}
+};

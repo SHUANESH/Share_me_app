@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import jwt_decode from "jwt-decode";
 import { useDispatch, useSelector } from "react-redux";
 import {
   createPostUser,
@@ -15,8 +16,10 @@ const ForumFormComponent = ({ currentId, setCurrentId }) => {
   const post = useSelector((state) =>
     currentId ? state.posts.posts.find((p) => p._id === currentId) : null
   );
+  const token = localStorage.getItem("jwtToken");
+  const user = jwt_decode(token);
   const dispatch = useDispatch();
-  const { user } = useSelector((state) => state.user);
+
   useEffect(() => {
     if (post) setPostData(post);
   }, [post]);
@@ -27,7 +30,7 @@ const ForumFormComponent = ({ currentId, setCurrentId }) => {
       dispatch(
         updatePost(currentId, {
           ...postData,
-          firstName: user?.firstName,
+          fullName: `${user?.firstName} ${user?.lastName}`,
           email: user?.email,
         })
       );
@@ -36,7 +39,7 @@ const ForumFormComponent = ({ currentId, setCurrentId }) => {
         createPostUser(
           {
             ...postData,
-            firstName: user?.firstName,
+            fullName: `${user?.firstName} ${user?.lastName}`,
             email: user?.email,
           },
           history
@@ -50,6 +53,7 @@ const ForumFormComponent = ({ currentId, setCurrentId }) => {
     setPostData({
       title: "",
       message: "",
+      messageType: "",
     });
   };
   return (
@@ -79,6 +83,16 @@ const ForumFormComponent = ({ currentId, setCurrentId }) => {
               setPostData({ ...postData, message: e.target.value })
             }
           ></input>
+          <select
+            onSelect={(e) =>
+              setPostData({ ...postData, message: e.target.value })
+            }
+          >
+            <option>נושא ההודעה</option>
+            <option>{"interview"}</option>
+            <option>{"information"}</option>
+            <option>{"tips"}</option>
+          </select>
         </p>
 
         <div className="submit">

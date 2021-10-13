@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import jwt_decode from "jwt-decode";
 import DeleteIcon from "@material-ui/icons/Delete";
 import MoreHorizIcon from "@material-ui/icons/MoreHoriz";
 import { ButtonBase } from "@material-ui/core";
@@ -12,8 +13,10 @@ import { hebrewVariables } from "../../../../../utils/hebrewVariables";
 const ForumPostComponent = ({ post, setCurrentId }) => {
   const dispatch = useDispatch();
   const [isDelete, setIsDelete] = useState(false);
-  const { user } = useSelector((state) => state.user);
+  // const { user } = useSelector((state) => state.user);
   const history = useHistory();
+  const token = localStorage.getItem("jwtToken");
+  const user = jwt_decode(token);
 
   const openPost = () => {
     history.push(`/forum/${post._id}`);
@@ -24,7 +27,7 @@ const ForumPostComponent = ({ post, setCurrentId }) => {
       <ButtonBase onClick={openPost}>
         <div className="media" title={post.title} />
         <div className="overlay">
-          <h3>{post.firstName}</h3>
+          <h3>{post.fullName}</h3>
           <p style={{ direction: "ltr" }}>{moment(post.createdAt).fromNow()}</p>
         </div>
         <h5 className="title">{post.title}</h5>

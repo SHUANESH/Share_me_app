@@ -1,7 +1,7 @@
 import React from 'react'
 import './home.scss';
 import News from '../../features/news/News'
-import Navbar from '../../features/navbar/Navbar'
+import Navbar from '../../features/navbar/navbar'
 import About from '../../features/about/About'
 const Home = () => {
   return (

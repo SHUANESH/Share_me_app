@@ -12,7 +12,7 @@ function updateOptions(options) {
 
 const fetcher = async (url, options) => {
   try {
-    return await fetch(url, updateOptions(options))
+    return await fetch(`http://localhost:8080${url}`, updateOptions(options))
       .then((res) => res.json())
       .then((response) => response)
       .catch(err => {

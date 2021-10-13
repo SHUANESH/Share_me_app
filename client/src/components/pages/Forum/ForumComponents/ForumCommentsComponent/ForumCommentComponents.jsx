@@ -2,12 +2,14 @@ import React, { useState, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import "./forum-comment.css";
 import { commentPost } from '../../../../Redux/actions/postsActions'
+import jwt_decode from "jwt-decode";
 
 const ForumPostComponents = ({post}) => {
   const [comments, setComments]= useState(post?.data?.comments)
   const [comment, setComment] = useState("")
-
-    const { user } = useSelector((state) => state.user);
+  const token = localStorage.getItem("jwtToken");
+  const user = jwt_decode(token);
+    // const { user } = useSelector((state) => state.user);
    const dispatch = useDispatch()
    const commentRef = useRef()
   const handleClick = async ()=>{
@@ -19,8 +21,8 @@ const ForumPostComponents = ({post}) => {
   }
   return (
       <div className="chat-container">
-              <ul className="chat-thread">
-      {comments.map((c,i)=>(
+       <ul className="chat-thread">
+      {comments?.map((c,i)=>(
         <li  key={i}>
        <strong>{c.split(": ")[0]}: </strong> 
        {c.split(":")[1]}
