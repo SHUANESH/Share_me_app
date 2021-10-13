@@ -6,7 +6,8 @@ import './footer.scss';
 const Footer = () => {
   return (
     <div>
-      <footer>
+      <footer className = "myfooter">
+        <hr/>
       © 2021 Copyright : Take-Share
       </footer>
     </div>
