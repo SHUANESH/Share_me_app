@@ -7,7 +7,7 @@ const News = () => {
   const newsApiKey = process.env.REACT_APP_NEWS_API_KEY;
 
   useEffect(() => {
-    fetch(`${newsApi}${newsApiKey}&pageSize=4`)
+    fetch(`${newsApi}${newsApiKey}&pageSize=6`)
       .then((response) => response.json())
       .then((response) => {
         console.log(response, setNewsData(response?.articles));
@@ -21,6 +21,7 @@ const News = () => {
       <main class="page-content">
         {newsData?.map((item, index) => {
           return (
+            
             <div class="card">
               <div class="content">
                 <h2 class="title"> {newsData[index]?.title}</h2>
@@ -32,9 +33,9 @@ const News = () => {
                 <p class="copy">{newsData[index]?.description}</p>
                 {/* {newsData[index]?.source?.name} */}
 
-                <button class="btn" onClick={newsData[index]?.url}>
-                  {/* /<a href={newsData[index]?.url}></a> */}
-                </button>
+                {/* <button > */}
+                  <a  class="btn" href={newsData[index]?.url}>READ</a>
+                {/* </button> */}
               </div>
             </div>
           );
