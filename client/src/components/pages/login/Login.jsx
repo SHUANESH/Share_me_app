@@ -14,13 +14,6 @@ const Login = () => {
     email: "",
     password: "",
   });
-
-  // const f =(e)=>{
-
-  // }
-  // useEffect(() => {
-  //   f()
-  // }, [isSend])
   return (
     <>
       <div className="container">
