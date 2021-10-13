@@ -7,11 +7,16 @@ import Register from '../components/pages/register/Register';
 import Tips from '../components/pages/tips/Tips';
 import Login from '../components/pages/login/Login';
 import {Context, ContextProvider} from "../context/Context";
+import NavBar from "../components/features/navbar/Navbar"
+import Footer from "../components/features/footer/Footer";
+
 
 const Routing = () => {
     const {user} = useContext(Context);
     return (
         <ContextProvider>
+            <NavBar/>
+            <Footer/>
         <Switch>
             {/* <Route path="/forum/:id" component={PostDetails} />
             <Route path="/forum" component={Forum} /> */}
