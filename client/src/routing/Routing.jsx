@@ -29,7 +29,7 @@ const Routing = () => {
                 <Route  path='/information'><Information/> </Route>
                 <Route  path='/tips'> <Tips/> </Route>
             </Switch>
-            <Footer/>
+            {/* <Footer/> */}
         </>    
     )
 }
