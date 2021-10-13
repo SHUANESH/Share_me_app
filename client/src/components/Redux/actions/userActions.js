@@ -32,7 +32,6 @@ export const getUser = (loginInfo) => async dispatch => {
             await fetch("/api/login", {
                 method: 'POST',
                 body: JSON.stringify({
-                    role: loginInfo.role,
                     email: loginInfo.email,
                     password: loginInfo.password,
                 }), headers: { "Content-Type": "application/json" }

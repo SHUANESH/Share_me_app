@@ -43,70 +43,71 @@ const Register = () => {
         {/* <img src="share.png" alt="logo"/> */}
       </div>
       <div className="right">
-        <form
-          // className="register-form-form"
-          onSubmit={(e) => {
-            e.preventDefault();
-          }}
-        >
-          <TextField
-            dir="ltr"
-            name="firstName"
-            value={userInfo.firstName}
-            onChange={(e) => handleChange(e, userInfo, setUserInfo)}
-            type={"text"}
-            label={hebrewVariables.firstName}
-          />
-          <TextField
-            name="lastName"
-            value={userInfo.lastName}
-            onChange={(e) => handleChange(e, userInfo, setUserInfo)}
-            type={"text"}
-            label={hebrewVariables.lastName}
-            size="small"
-          />
-          <TextField
-            name="email"
-            value={userInfo.email}
-            onChange={(e) => handleChange(e, userInfo, setUserInfo)}
-            type={"email"}
-            label={hebrewVariables.email}
-          />
-          <TextField
-            name="phone"
-            value={userInfo.phone}
-            onChange={(e) => handleChange(e, userInfo, setUserInfo)}
-            type={"text"}
-            label={hebrewVariables.phone}
-          />
-          <TextField
-            name="IdNumber"
-            value={userInfo.IdNumber}
-            onChange={(e) => handleChange(e, userInfo, setUserInfo)}
-            type={"text"}
-            label={"ID"}
-          />
-          <TextField
-            name="role"
-            onChange={(e) => handleChange(e, userInfo, setUserInfo)}
-            type={"text"}
-            value={userInfo.role}
-            label={"role"}
-          />
-          <TextField
-            name="password"
-            onChange={(e) => handleChange(e, userInfo, setUserInfo)}
-            type={"text"}
-            value={userInfo.password}
-            label={hebrewVariables.password}
-          />
-          <Button variant="outlined" onClick={sendUserSign} color="primary">
-            הרשם
-          </Button>
-          <Button variant="outlined" color="secondary">
-            <Link to="/login">התחבר</Link>
-          </Button>
-          {/* <button onClick={sendUserSign}>{"sign in"}</button>
+      <form 
+        // className="register-form-form"
+        onSubmit={(e) => {
+          e.preventDefault();
+        }}
+      >
+        <TextField 
+          name="firstName"
+          value={userInfo.firstName}
+          onChange={(e) => handleChange(e, userInfo, setUserInfo)}
+          type={"text"}
+          label={hebrewVariables.firstName}
+        />
+        <TextField
+        
+          name="lastName"
+          value={userInfo.lastName}
+          onChange={(e) => handleChange(e, userInfo, setUserInfo)}
+          type={"text"}
+          label={hebrewVariables.lastName}
+          size="small"
+        />
+        <TextField
+          name="email"
+          value={userInfo.email}
+          onChange={(e) => handleChange(e, userInfo, setUserInfo)}
+          type={"email"}
+          label={hebrewVariables.email}
+        />
+        <TextField
+          name="phone"
+          value={userInfo.phone}
+          onChange={(e) => handleChange(e, userInfo, setUserInfo)}
+          type={"text"}
+          label={hebrewVariables.phone}
+        />
+        <TextField
+          name="IdNumber"
+          value={userInfo.IdNumber}
+          onChange={(e) => handleChange(e, userInfo, setUserInfo)}
+          type={"text"}
+          label={"ID"}
+        />
+        <TextField
+          name="role"
+          value={userInfo.role}
+          onChange={(e) => handleChange(e, userInfo, setUserInfo)}
+          type={"text"}
+          value={userInfo.role}
+          label={"role"}
+        />
+        <TextField
+          name="password"
+          value={userInfo.password}
+          onChange={(e) => handleChange(e, userInfo, setUserInfo)}
+          type={"text"}
+          value={userInfo.password}
+          label={hebrewVariables.password}
+        />
+         <Button variant="outlined" onClick={sendUserSign }color="primary">הרשמי
+ </Button>
+ {/* <Button variant="outlined" color="secondary">התחברי
+ <Link to="/"></Link>
+ </Button> */}
+        {/* <button onClick={sendUserSign}>{"sign in"}</button>
         <Link to="/">Log in</Link>  */}
         </form>
       </div>
