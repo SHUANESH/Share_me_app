@@ -14,7 +14,7 @@ const messageSchema = new Schema(
     },
     messageType:{
       type: String,
-      enum:["interview" , "information" , "tips"]
+      enum:["Stack Overflow" , "טיפים" , "ראיונות"]
     },
     message: {
       type: String,
