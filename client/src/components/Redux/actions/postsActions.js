@@ -56,7 +56,6 @@ export const createPostUser = (post, history) => async (dispatch) => {
     })
       .then((res) => res.json())
       .then((res) => {
-        debugger;
         dispatch({
           type: CREATE,
           payload: res.data,

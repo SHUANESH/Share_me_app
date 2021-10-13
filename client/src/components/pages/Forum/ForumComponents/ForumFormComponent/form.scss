@@ -1,8 +1,9 @@
 #form-div {
-  background-color: rgba(72, 72, 72, 0.4);
+  background-color: rgba(255, 255, 255, 0.4);
   padding: 15px;
-  width: 100%;
+  width: 90%;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  margin-left: 50px
 }
 .forum-form {
   display: flex;
@@ -17,7 +18,7 @@
 }
 
 .feedback-input {
-  color: #3c3c3c;
+  color: #ffffff;
   font-family: Helvetica, Arial, sans-serif;
   font-weight: 500;
   font-size: 18px;
@@ -113,4 +114,61 @@ input:focus {
 .submit:hover .ease {
   width: 100%;
   background-color: white;
+}
+
+
+#form-div {
+  display: flex;
+  // flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+ background-color: white
+;
+   #form1{
+      display: flex;
+      // flex-direction: column;
+      color: rgb(225, 236, 225);
+      justify-content: space-around;
+      align-items: center;
+      padding: 2px 16px;
+
+      input[type="text"], select {
+          box-shadow: aliceblue 2px 2px 4px;
+          padding: 6px;
+          width: 120px;
+          border-radius: 4px;
+          box-sizing: border-box;
+          margin-top: 2px;
+          margin-bottom: 16px;
+          margin-left: 0px;
+      }
+    
+      /* input[type=submit] {
+  background-color: #21996d;
+  color: white;
+  padding: 12px 20px;
+  border: none;
+  
+ 
+  cursor: pointer;
+} */
+
+      button {
+          background-color: #767c7c;
+          border: none;
+          color: white;
+          padding: 12px 25px;
+          text-align: center;
+          text-decoration: none;
+          display: inline-block;
+          font-size: 16px;
+          margin: 4px 2px;
+          transition-duration: 0.4s;
+          cursor: pointer;
+          border-radius: 8px;
+      }
+      button:hover {
+          background-color: rgb(163, 204, 231);
+      }
+  }
 }

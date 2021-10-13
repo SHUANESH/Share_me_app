@@ -21,6 +21,9 @@
     overflow-y: scroll;
     overflow-x: hidden;
 }
+.li-ForumPostComponent{
+    padding: 20px;
+}
 .chat-thread li {
     position: relative;
     clear: both;
@@ -29,7 +32,7 @@
     margin: 0 0 20px 0;
     font: 16px/20px 'Noto Sans', sans-serif;
     border-radius: 10px;
-    background-color: rgb(150, 253, 253);
+    background-color: rgb(50, 117, 172);
 }
 /* Chat - Avatar */
 .chat-thread li:before {
@@ -47,7 +50,7 @@
     content: '';
     width: 0;
     height: 0;
-    border-top: 15px solid rgb(150, 253, 253);;
+    border-top: 15px solid rgb(37, 107, 107);;
 }
 .chat-thread li {
     animation: show-chat-odd 0.15s 1 ease-in;
@@ -59,7 +62,7 @@
 }
 .chat-thread li:before {
     right: -80px;
-    background-color: rgb(150, 253, 253);;
+    background-color: rgb(54, 125, 146);;
 }
 .chat-thread li:after {
     border-right: 15px solid transparent;

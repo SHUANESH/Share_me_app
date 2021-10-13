@@ -7,7 +7,7 @@ const News = () => {
   const newsApiKey = process.env.REACT_APP_NEWS_API_KEY;
 
   useEffect(() => {
-    fetch(`${newsApi}${newsApiKey}&pageSize=6`)
+    fetch(`${newsApi}${newsApiKey}&pageSize=4`)
       .then((response) => response.json())
       .then((response) => {
         console.log(response, setNewsData(response?.articles));
@@ -22,7 +22,7 @@ const News = () => {
         {newsData?.map((item, index) => {
           return (
             
-            <div class="card">
+            <div class="news-card">
               <div class="content">
                 <h2 class="title"> {newsData[index]?.title}</h2>
                 <img

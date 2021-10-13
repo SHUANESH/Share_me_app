@@ -33,7 +33,7 @@ const dispatch = useDispatch();
         console.log(error.message);
     }
 
-    const handledSubmit = async (dispatch)=>{
+    const handledSubmit = async ()=>{
         dispatch({ type: START_LOADING });
         await fetcher(`/api/forum/search?term=${termRef.current.value}`)
           .then((response) => {
@@ -59,7 +59,6 @@ const dispatch = useDispatch();
                     <Button color="primary" variant="text" > <NavLink to="/forum" activeStyle ref={termRef} onClick={handledSubmit}>Stack Overflow</NavLink></Button>
                     <Button color="primary" variant="text" > <NavLink to="/forum" activeStyle ref={termRef} onClick={handledSubmit}>ראיונות</NavLink></Button>
                     <Button color="primary" variant="text" >  <NavLink to="/forum" activeStyle ref={termRef} onClick={handledSubmit}>טיפים</NavLink></Button>
-                    <Button color="primary" variant="text" >   <NavLink to="/contect" activeStyle>צור קשר</NavLink></Button>
                 </NavMenu>
                 <NavBtn>
                     <NavBtnLink to="/Logout" onClick={logout}>התנתק</NavBtnLink>
