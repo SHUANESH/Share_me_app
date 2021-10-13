@@ -7,6 +7,7 @@ const Footer = () => {
   return (
     <div>
       <footer>
+        <hr/>
       © 2021 Copyright : Take-Share
       </footer>
     </div>
