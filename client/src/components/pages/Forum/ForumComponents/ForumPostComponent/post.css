@@ -1,0 +1,50 @@
+.media {
+  height: 100%;
+  padding-top: 5%;
+  background-blend-mode: darken;
+  border-radius: 15px;
+}
+.border {
+  border: solid;
+}
+.fullHeightCard {
+  height: 100%;
+}
+.card {
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+  height: 150px;
+}
+.overlay {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  color: black;
+}
+.overlay > p {
+  font-size: 12px;
+  font-style: oblique;
+}
+.overlay2 {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  color: black;
+}
+.grid {
+  display: flex;
+}
+
+.title {
+  padding: 0 16px;
+}
+.cardActions {
+  padding: 0 16px 8px 16px;
+  display: flex;
+  justify-content: space-between;
+}
+.post-btn{
+  border: none;
+  background-color: transparent;
+}

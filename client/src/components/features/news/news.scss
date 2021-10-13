@@ -10,6 +10,16 @@ $bp-lg: 800px;
   --e: cubic-bezier(0.19, 1, 0.22, 1);
 }
 
+<<<<<<< HEAD
+* {
+  box-sizing: border-box;
+}
+
+// html, body {
+//   height: 100%;
+// }
+=======
+>>>>>>> c64a377f8a518624a395064e3f55e4c020042c98
 .imgNews{
     width: 100%;
     height: 150%;
@@ -18,6 +28,13 @@ $bp-lg: 800px;
     text-align: center;
     color: rgb(6, 6, 112);
 }
+<<<<<<< HEAD
+// body {
+//   display: grid;
+//   place-items: center;
+// }
+=======
+>>>>>>> c64a377f8a518624a395064e3f55e4c020042c98
 
 .page-content {
   display: grid;

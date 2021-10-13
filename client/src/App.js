@@ -1,21 +1,18 @@
 import "./App.css";
-import { BrowserRouter as Router } from "react-router-dom";
 import Routing from "./routing/Routing";
-import Contact from "./components/pages/contact/Contact"
-import Navbar from "./components/features/navbar/Navbar";
-
-
-const App = () => {
+import { Provider } from "react-redux";
+import store from "./components/Redux/store";
+import { BrowserRouter as Router } from "react-router-dom";
+function App() {
   return (
-     
-    <div className="App">
-      
-    <Router>
-      <Routing/> 
-    </Router>
-  </div>
-
-  )
-};
+    <Provider store={store}>
+      <div className="App">
+        <Router>
+           <Routing/>
+        </Router>
+      </div>
+    </Provider>
+  );
+}
 
 export default App;

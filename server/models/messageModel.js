@@ -12,6 +12,10 @@ const messageSchema = new Schema(
     title: {
       type: String,
     },
+    messageType:{
+      type: String,
+      enum:["interview" , "information" , "tips"]
+    },
     message: {
       type: String,
       required: true,
@@ -21,9 +25,6 @@ const messageSchema = new Schema(
       required: true,
       default: Date.now,
       index: { expires: "365d" },
-    },
-    kindOfMessage: {
-     type:String
     },
     comments: { type: [String], default: [] },
     authorByUser: { type: Schema.Types.ObjectId, ref: "user" },
